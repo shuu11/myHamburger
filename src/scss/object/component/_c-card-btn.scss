@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+@use "../../variable/_variable.scss" as *;
+
+.c-card-btn {
+	display: inline-block;
+
+	width: 60%;
+	line-height: 76px;
+
+	font-weight: bold;
+
+	color: $text-brown;
+	background-color: $bgc-white;
+
+	border-radius: 38px;
+}

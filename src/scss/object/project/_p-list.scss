@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+@use "../../variable/_variable.scss" as *;
+
+.p-list {
+	margin-top: 32px;
+	margin-left: 20px;
+
+	@include breakpoint(sm) {
+		margin-top: 53px;
+		margin-left: 50px;
+	}
+}
+
+.p-list__ordered {
+	text-align: left;
+
+	&--list {
+		&2 {
+			margin-top: 23px;
+			margin-left: 18px;
+		}
+	}
+
+	&--list + &--list {
+		margin-top: 23px;
+	}
+}
+
+.p-list__unordered {
+	margin-top: 63px;
+	text-align: left;
+
+	&--list {
+		&2 {
+			margin-top: 23px;
+			margin-left: 18px;
+		}
+	}
+
+	&--list + &--list {
+		margin-top: 23px;
+	}
+}

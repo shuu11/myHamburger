@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+@use "../../variable/_variable.scss" as *;
+
+.p-header {
+	position: relative;
+
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		height: 217px;
+		padding: 0;
+
+		background-color: $bgc-header;
+
+		@include breakpoint(lg) {
+			flex-direction: row;
+			justify-content: space-between;
+
+			padding: 0 3rem 0 6.5rem;
+		}
+
+		&--ttl {
+			margin-top: 40px;
+
+			font-family: $ff-roboto;
+			font-weight: bold;
+			font-size: clamp(4rem, calc(4rem + 1vw), 6.4rem);
+
+			@include breakpoint(lg) {
+				margin-top: 0px;
+			}
+		}
+	}
+
+	&__btn {
+		position: absolute;
+		top: 18px;
+		right: 26px;
+
+		font-family: $ff-roboto;
+		font-weight: bold;
+		font-size: clamp(2rem, calc(2rem + 1vw), 3.4rem);
+
+		color: $text-black;
+
+		@include breakpoint(lg) {
+			display: none;
+		}
+	}
+}
+

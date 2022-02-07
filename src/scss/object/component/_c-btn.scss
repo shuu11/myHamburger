@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+@use "../../variable/_variable.scss" as *;
+
+.c-btn {
+	width: 100%;
+	line-height: 104px;
+
+	font-weight: bold;
+
+	color: $text-black;
+	background: $bgc-btn;
+
+	border: 1px solid $text-black;
+	border-radius: 10px;
+
+	cursor: pointer;
+	transition: all 0.1s;
+
+	@include breakpoint(sm) {
+		width: 31.7%;
+	}
+
+	&:focus,
+	&:hover {
+		opacity: 0.7;
+	}
+}
+
+.c-btn__search {
+	@extend .c-btn;
+
+	width: 25%;
+	line-height: 46px;
+}
+

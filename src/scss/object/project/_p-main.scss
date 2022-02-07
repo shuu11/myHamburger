@@ -1,0 +1,86 @@
+@charset "utf-8";
+
+@use "../../variable/_variable.scss" as *;
+
+//	共通
+.p-main {
+	&__inner {
+		padding: 20px;
+
+		@include breakpoint(sm) {
+			padding: 7.7% 7.2%;
+		}
+	}
+
+	&__top {
+		color: $text-brown;
+
+		h2 {
+			font-size: clamp(2.8rem, calc(2.8rem + 1vw), 3.6rem);
+			font-weight: bold;
+			text-align: left;
+		}
+
+		p {
+			margin-top: 28px;
+
+			line-height: 1.3125;
+			text-align: left;
+		}
+
+		h3,
+		h4,
+		h5,
+		h6 {
+			margin-top: 30px;
+
+			font-size: 2rem;
+			font-weight: bold;
+			text-align: left;
+
+			@include breakpoint(sm) {
+				margin-top: 60px;
+			}
+		}
+
+		h3:first-of-type {
+			font-size: clamp(2.4rem, calc(2.4rem + 1vw), 2.8rem);
+		}
+	}
+}
+
+//	archive,archive-search
+.archive,
+.archive-search {
+	.p-main {
+		padding-bottom: 30px;
+
+		&__inner {
+			@include breakpoint(sm) {
+				padding: 5%;
+			}
+		}
+	}
+}
+
+//	single,page
+.single,
+.page {
+	.p-main {
+		&__inner {
+			@include breakpoint(sm) {
+				padding: 5%;
+			}
+		}
+
+		&__top {
+			p {
+				margin-top: 32px;
+
+				@include breakpoint(sm) {
+					margin-top: 63px;
+				}
+			}
+		}
+	}
+}

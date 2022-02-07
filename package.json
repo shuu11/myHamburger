@@ -1,0 +1,57 @@
+{
+  "name": "try",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "config": {
+    "url": "https://github.com/shuu11/myHamburger.git"
+  },
+  "scripts": {
+    "dev": "npx gulp clean && npx gulp development",
+    "pro": "npx gulp clean && npx gulp production",
+    "fix": "npm-run-all -s fix:*",
+    "fix:eslint": "npx eslint . --fix",
+    "fix:prettier": "npx prettier ./src/** --write",
+    "ncu": "npx ncu",
+    "update": "npx ncu -u",
+    "setup": "npm-run-all -s setup:*",
+    "setup:init": "git init",
+    "setup:add": "git add .",
+    "setup:commit": "git commit",
+    "setup:branch": "git branch -M main",
+    "setup:remote": "git remote add origin %npm_package_config_url%",
+    "setup:push": "git push -u origin main",
+    "start": "npm-run-all -s start:*",
+    "start:add": "git add .",
+    "start:commit": "git commit",
+    "start:push": "git push origin"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.27.7",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-changed": "^4.0.3",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-load-plugins": "^2.0.7",
+    "gulp-plumber": "^1.2.1",
+    "gulp-purgecss": "^4.1.3",
+    "gulp-sass": "^5.1.0",
+    "gulp-sass-glob-use-forward": "^0.1.3",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "npm-check-updates": "^12.2.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.1",
+    "sass": "^1.49.7"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "ie >= 11",
+    "Android >= 4"
+  ]
+}

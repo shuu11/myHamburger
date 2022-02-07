@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+// reset
+@use './reset/*';
+
+// variable
+@use './variable/*';
+
+// foundation
+@use './foundation/**';
+
+// layout
+@use './layout/**';
+
+// object/component
+@use './object/component/**';
+
+// object/project
+@use './object/project/**';
+
+// object/utility
+@use './object/utility/**';

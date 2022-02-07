@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+@use "../variable/_variable.scss" as *;
+
+@font-face {
+	font-family: "mplus-1m";
+	src: url("../../font/mplus-1m-bold.ttf") format("truetype"),
+		url("../../font/mplus-1m-regular.ttf") format("truetype");
+}
+
