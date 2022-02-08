@@ -40,8 +40,8 @@ const paths = {
 		dest: `${proj.pro}/font`,
 	},
 	html: {
-		src: `${proj.dev}/html/**/*.html`,
-		dest: `${proj.pro}/html`,
+		src: `${proj.dev}/**/*.html`,
+		dest: `${proj.pro}/`,
 	},
 	image: {
 		src: `${proj.dev}/image/**`,
@@ -65,7 +65,7 @@ const paths = {
 
 const bsConf = {
 	base: `./`,
-	start: `${proj.dev}/html/front-page.html`,
+	start: `${proj.dev}/index.html`,
 };
 
 //----------------------------------------------------------------------
@@ -150,8 +150,9 @@ const production = (done) => {
 		.pipe(dest(paths.image.dest));
 
 	// js
-	src(paths.js.src) // copy
+	src(paths.js.src) // minify
 		.pipe($.plumber())
+		.pipe($.uglify())
 		.pipe(dest(paths.js.dest));
 
 	// sass
