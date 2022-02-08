@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@use "../../variable/_variable.scss" as *;
+@use '../../variable/_variable.scss' as *;
 
 .p-code {
 	margin-top: 63px;
@@ -11,4 +11,3 @@
 	color: $text-brown;
 	background-color: $bgc-gray;
 }
-

@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@use "../../variable/_variable.scss" as *;
+@use '../../variable/_variable.scss' as *;
 
 .p-pagenation {
 	display: flex;
@@ -70,4 +70,3 @@
 		}
 	}
 }
-

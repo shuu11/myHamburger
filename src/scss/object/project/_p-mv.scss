@@ -1,19 +1,19 @@
 @charset "utf-8";
 
-@use "../../variable/_variable.scss" as *;
+@use '../../variable/_variable.scss' as *;
 
 //	共通
 .p-mv {
 	position: relative;
 	padding-bottom: 285px;
 
-	background-image: url("../image/xs_mv_front-page@2x.jpg");
+	background-image: url('../image/xs_mv_front-page@2x.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
 
 	@include breakpoint(sm) {
-		background-image: url("../image/mv_front-page@2x.jpg");
+		background-image: url('../image/mv_front-page@2x.jpg');
 	}
 
 	@include breakpoint(lg) {
@@ -44,7 +44,7 @@
 .archive-search {
 	.p-mv {
 		padding-bottom: 283px;
-		background-image: url("../image/mv_archive@2x.jpg");
+		background-image: url('../image/mv_archive@2x.jpg');
 
 		@include breakpoint(lg) {
 			padding-bottom: 239px;
@@ -82,7 +82,7 @@
 .single {
 	.p-mv {
 		padding-bottom: 225px;
-		background-image: url("../image/mv_single@2x.jpg");
+		background-image: url('../image/mv_single@2x.jpg');
 
 		@include breakpoint(sm) {
 			padding-bottom: 500px;
@@ -98,7 +98,7 @@
 .page {
 	.p-mv {
 		padding-bottom: 225px;
-		background-image: url("../image/mv_page@2x.jpg");
+		background-image: url('../image/mv_page@2x.jpg');
 
 		@include breakpoint(sm) {
 			padding-bottom: 500px;

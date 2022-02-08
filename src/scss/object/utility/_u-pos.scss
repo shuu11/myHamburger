@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@use "../../variable/_variable.scss" as *;
+@use '../../variable/_variable.scss' as *;
 
 .u-pos {
 	//  固定
@@ -90,4 +90,3 @@
 		transform: translate(0%, 0%);
 	}
 }
-

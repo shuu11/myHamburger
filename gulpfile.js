@@ -10,185 +10,187 @@ const gulp = require('gulp');
 const { src, dest, series, parallel, watch } = require('gulp');
 
 const dartSass = require('gulp-sass')(require('sass'));
-const del = require('del');
 
-const $ = require('gulp-load-plugins')({
-  pattern: ['gulp{-,.}*', 'browser-sync', 'imagemin-pngquant', 'imagemin-mozjpeg'],
-});
+const del = require('del');
+const bs = require('browser-sync');
+const pngquant = require('imagemin-pngquant');
+const mozjpeg = require('imagemin-mozjpeg');
+
+const $ = require('gulp-load-plugins')();
 
 //----------------------------------------------------------------------
 //  path
 //----------------------------------------------------------------------
 const proj = {
-  dev: './src',
-  pro: './dist',
+	dev: './src',
+	pro: './dist',
 };
 
 const paths = {
-  clean: {
-    del: `${proj.pro}/**`,
-  },
+	clean: {
+		src: `${proj.pro}/**`,
+	},
 
-  css: {
-    src: `${proj.dev}/css/**`,
-    dest: `${proj.pro}/css`,
-  },
-  font: {
-    src: `${proj.dev}/font/**`,
-    dest: `${proj.pro}/font`,
-  },
-  html: {
-    src: `${proj.dev}/html/**/*.html`,
-    dest: `${proj.pro}/html`,
-  },
-  image: {
-    src: `${proj.dev}/image/**`,
-    dest: `${proj.pro}/image`,
-  },
-  js: {
-    src: `${proj.dev}/js/**/*.js`,
-    dest: `${proj.pro}/js`,
-  },
-  scss: {
-    src: `${proj.dev}/scss/**.scss`,
-    dest: `${proj.dev}/css/`,
-  },
-  vendor: {
-    src: `${proj.dev}/vendor/**`,
-    dest: `${proj.pro}/vendor`,
-  },
+	css: {
+		src: `${proj.dev}/css/**`,
+		dest: `${proj.pro}/css`,
+	},
+	font: {
+		src: `${proj.dev}/font/**`,
+		dest: `${proj.pro}/font`,
+	},
+	html: {
+		src: `${proj.dev}/html/**/*.html`,
+		dest: `${proj.pro}/html`,
+	},
+	image: {
+		src: `${proj.dev}/image/**`,
+		dest: `${proj.pro}/image`,
+	},
+	js: {
+		src: `${proj.dev}/js/**/*.js`,
+		dest: `${proj.pro}/js`,
+	},
+	scss: {
+		src: `${proj.dev}/scss/**.scss`,
+		dest: `${proj.dev}/css/`,
+	},
+	vendor: {
+		src: `${proj.dev}/vendor/**`,
+		dest: `${proj.pro}/vendor`,
+	},
 
-  watch: [`${proj.dev}/**`, `!${proj.dev}/css/**`],
+	watch: [`${proj.dev}/**`, `!${proj.dev}/css/**`],
 };
 
-const bs = {
-  base: `./`,
-  start: `${proj.dev}/html/front-page.html`,
+const bsConf = {
+	base: `./`,
+	start: `${proj.dev}/html/front-page.html`,
 };
 
 //----------------------------------------------------------------------
 //  task
 //----------------------------------------------------------------------
 const clean = (done) => {
-  del(paths.clean.del);
+	del(paths.clean.src);
 
-  done();
+	done();
 };
 
 const development = (done) => {
-  // css
-  // 処理なし
+	// css
+	// 処理なし
 
-  // font
-  // 処理なし
+	// font
+	// 処理なし
 
-  // html
-  // 処理なし
+	// html
+	// 処理なし
 
-  // image
-  // 処理なし
+	// image
+	// 処理なし
 
-  // js
-  // 処理なし
+	// js
+	// 処理なし
 
-  // sass
-  src(paths.scss.src)
-    .pipe($.plumber()) //	エラーになっても止めない
-    .pipe($.sassGlobUseForward())
-    .pipe(dartSass())
-    .pipe($.autoprefixer())
-    .pipe(dest(paths.scss.dest));
+	// sass
+	src(paths.scss.src) // sassコンパイル
+		.pipe($.plumber())
+		.pipe($.sassGlobUseForward())
+		.pipe(dartSass())
+		.pipe($.autoprefixer())
+		.pipe(dest(paths.scss.dest));
 
-  // vendor
-  // 処理なし
+	// vendor
+	// 処理なし
 
-  done();
+	done();
 };
 
 const production = (done) => {
-  // css
-  src(paths.css.src)
-    .pipe($.plumber()) //	エラーになっても止めない
-    .pipe(
-      $.purgecss({
-        content: [paths.html.src, paths.js.src],
-      })
-    )
-    .pipe($.cleanCss())
-    .pipe(dest(paths.css.dest));
+	// css
+	src(paths.css.src) // purge
+		.pipe($.plumber())
+		.pipe(
+			$.purgecss({
+				content: [paths.html.src, paths.js.src],
+			})
+		)
+		.pipe($.cleanCss())
+		.pipe(dest(paths.css.dest));
 
-  // font
-  src(paths.font.src)
-    .pipe($.plumber()) //	エラーになっても止めない
-    .pipe(dest(paths.font.dest));
+	// font
+	src(paths.font.src) // copy
+		.pipe($.plumber())
+		.pipe(dest(paths.font.dest));
 
-  // html
-  src(paths.html.src)
-    .pipe($.plumber()) //	エラーになっても止めない
-    .pipe(dest(paths.html.dest));
+	// html
+	src(paths.html.src) // copy
+		.pipe($.plumber())
+		.pipe(dest(paths.html.dest));
 
-  // image
-  src(paths.image.src)
-    .pipe($.plumber()) //	エラーになっても止めない
-    .pipe($.changed(paths.image.dest))
-    .pipe(
-      $.imagemin([
-        $.imageminPngquant({
-          quality: [0.6, 0.7],
-          speed: 1,
-        }),
-        $.imageminMozjpeg({ quality: 65 }),
-        $.imagemin.svgo(),
-        $.imagemin.optipng(),
-        $.imagemin.gifsicle({
-          optimizationLevel: 3,
-        }),
-      ])
-    )
-    .pipe(dest(paths.image.dest));
+	// image
+	src(paths.image.src) // minify
+		.pipe($.plumber())
+		.pipe($.changed(paths.image.dest))
+		.pipe(
+			$.imagemin([
+				pngquant({
+					quality: [0.6, 0.7],
+					speed: 1,
+				}),
+				mozjpeg({ quality: 65 }),
+				$.imagemin.svgo(),
+				$.imagemin.optipng(),
+				$.imagemin.gifsicle({
+					optimizationLevel: 3,
+				}),
+			])
+		)
+		.pipe(dest(paths.image.dest));
 
-  // js
-  src(paths.js.src)
-    .pipe($.plumber()) //	エラーになっても止めない
-    .pipe(dest(paths.js.dest));
+	// js
+	src(paths.js.src) // copy
+		.pipe($.plumber())
+		.pipe(dest(paths.js.dest));
 
-  // sass
-  // 処理なし
+	// sass
+	// 処理なし
 
-  // vendor
-  src(paths.vendor.src)
-    .pipe($.plumber()) //	エラーになっても止めない
-    .pipe(dest(paths.vendor.dest));
+	// vendor
+	src(paths.vendor.src) // copy
+		.pipe($.plumber())
+		.pipe(dest(paths.vendor.dest));
 
-  done();
+	done();
 };
 
 const bsInit = (done) => {
-  $.browserSync.init({
-    server: {
-      baseDir: bs.base,
-    },
-    startPath: bs.start,
-    notify: false,
-    open: 'external',
-  });
+	bs.init({
+		server: {
+			baseDir: bsConf.base,
+		},
+		startPath: bsConf.start,
+		notify: false,
+		open: 'external',
+	});
 
-  done();
+	done();
 };
 
 const bsReload = (done) => {
-  $.browserSync.reload();
+	bs.reload();
 
-  done();
+	done();
 };
 
 //----------------------------------------------------------------------
 //  watchTask
 //----------------------------------------------------------------------
 const watchTask = (done) => {
-  watch(paths.watch, series(development, bsReload));
+	watch(paths.watch, series(development, bsReload));
 
-  done();
+	done();
 };
 
 //----------------------------------------------------------------------

@@ -9,11 +9,8 @@
   "scripts": {
     "dev": "npx gulp clean && npx gulp development",
     "pro": "npx gulp clean && npx gulp production",
-    "fix": "npm-run-all -s fix:*",
-    "fix:eslint": "npx eslint . --fix",
-    "fix:prettier": "npx prettier ./src/** --write",
-    "ncu": "npx ncu",
-    "update": "npx ncu -u",
+
+    "prettier": "npx prettier ./src/**/*.{html,js,scss} --write",
     "setup": "npm-run-all -s setup:*",
     "setup:init": "git init",
     "setup:add": "git add .",
@@ -44,7 +41,6 @@
     "gulp-sass-glob-use-forward": "^0.1.3",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-pngquant": "^9.0.2",
-    "npm-check-updates": "^12.2.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
     "sass": "^1.49.7"

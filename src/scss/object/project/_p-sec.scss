@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@use "../../variable/_variable.scss" as *;
+@use '../../variable/_variable.scss' as *;
 
 .p-sec {
 	display: flex;
@@ -30,20 +30,20 @@
 	}
 
 	&:nth-child(1) {
-		background-image: url("../image/xs_takeout_front-page@2x.jpg");
+		background-image: url('../image/xs_takeout_front-page@2x.jpg');
 
 		@include breakpoint(sm) {
-			background-image: url("../image/takeout_front-page@2x.jpg");
+			background-image: url('../image/takeout_front-page@2x.jpg');
 		}
 	}
 
 	&:nth-child(2) {
 		margin-top: 20px;
-		background-image: url("../image/xs_eatin_front-page@2x.jpg");
+		background-image: url('../image/xs_eatin_front-page@2x.jpg');
 
 		@include breakpoint(sm) {
 			margin-top: 0px;
-			background-image: url("../image/eatin_front-page@2x.jpg");
+			background-image: url('../image/eatin_front-page@2x.jpg');
 		}
 	}
 
@@ -97,4 +97,3 @@
 		}
 	}
 }
-

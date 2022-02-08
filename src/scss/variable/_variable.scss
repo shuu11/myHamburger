@@ -1,8 +1,8 @@
 @charset "utf-8";
 
 //  font family
-$ff-default: "mplus-1m", "Roboto", sans-serif;
-$ff-roboto: "Roboto", sans-serif;
+$ff-default: 'mplus-1m', 'Roboto', sans-serif;
+$ff-roboto: 'Roboto', sans-serif;
 
 //  text
 $text-white: #fff;
@@ -21,12 +21,10 @@ $bgc-btn: linear-gradient(to bottom, #f2ede9 30%, #e2dcd7 50%, #e1dbd6 60%, #e1d
 $bgc-card: #3c2b1c;
 $bgc-page: #3c2b1c;
 
-
 $WIDTH_XS: 361px;
 $WIDTH_SM: 641px;
 $WIDTH_MD: 769px;
 $WIDTH_LG: 961px;
-
 
 @mixin breakpoint($point) {
 	@if $point == xs {

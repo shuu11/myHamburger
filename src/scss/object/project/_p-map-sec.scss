@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@use "../../variable/_variable.scss" as *;
+@use '../../variable/_variable.scss' as *;
 
 .p-map-sec {
 	position: relative;
@@ -48,7 +48,7 @@
 			text-align: left;
 
 			&::after {
-				content: "";
+				content: '';
 				display: block;
 
 				width: 2em;
